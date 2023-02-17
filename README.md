@@ -53,8 +53,8 @@ LSTM
 ##### 평가지표
 
 행동 인식 모델을 평가하는 지표로써 accuracy와 f1-score를 사용한다. Accuracy와 f1-score를 수식적으로 나타내면 다음과 같다.
-$ accuracy= {TP+TN} over {TP+TN+FP+FN} $
-$ f1-score=2 TIMES  {"precision" TIMES "recall"} over {"precision"+"recall"} $
+$accuracy= {TP+TN} over {TP+TN+FP+FN}$
+$f1-score=2 TIMES  {"precision" TIMES "recall"} over {"precision"+"recall"}$
 
 행동 인식 모델에서 사용한 데이터는 올바른 데이터(ex 완벽한 팔굽혀펴기 자세)와 불량한 데이터(ex 엉덩이가 너무 내려간 팔굽혀펴기)가 약 1:3 비율인 데이터를 사용하였다. AI hub 자체에서 불량한 자세 데이터의 수를 훨씬 많이 제공한다. 바론 자세 데이터로만은 학습하기에 데이터가 부족한 점과 실제 서비스를 사용할 사용자들은 자세가 완벽하지 않을 가능성이 많기에 두 데이터를 섞어서 학습시켰다. 모든 데이터를 불량한 데이터로 예측할 경우 accuracy는 높지만, 실제 구현단계에서 인식을 잘 못하는 문제가 발생하기 때문에 f1-score도 평가 지표로 사용하였다.
 
@@ -85,11 +85,11 @@ CNN 모델의 성능이 가장 좋다는 것을 확인할 수 있다. 각도 정
 #### 구현
 
 파이썬 코드 실행
-![website](./img/impli1.PNG)
+![jh](./img/impli1.png)
 
 제안한 모델들을 활용하여 웹사이트에 구현하였다.
-![website](./img/image03.PNG)
-![website](./img/image02.PNG)
+![website](./img/image03.png)
+![bs](./img/image02.png)
 
 #### 결론
 
