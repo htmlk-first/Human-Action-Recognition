@@ -51,15 +51,15 @@ mediapipe pose는 사람을 인식하기 위해 총 33개의 관절 포인트(la
 데이터가 관절의 좌표와 각도가 시간에 따라 변하는 sequential data의 형태로 이루어져 있다. 이러한 sequential data를 분석하는데 RNN과 LSTM을 이용한 모델이 적합하다고 생각해 적용했다.
 
 * RNN
-![RNN](./img/RNN.PNG)
+![RNN](./img/RNN.PNG)  
 RNN은 시계열 데이터를 입력으로 사용한다. 대표적인 예시로는 자연어 처리 분야로 번역기 혹은 음성 처리 분야에서 응용된다. RNN은 출력이 다음 은닉층의 입력으로 들어가 순환되는 구조를 가지고 있다.  
 
 * LSTM
-![LSTM](./img/LSTM.PNG)
+![LSTM](./img/LSTM.PNG)  
 LSTM은 RNN의 문제점인 기울기 소실 및 폭발 문제를 해결하기 위해 고안된 모델이다.  
 
 * CNN
-![CNN](./img/CNNseq.png)
+![CNN](./img/CNNseq.png)  
 CNN은 여러 필터를 통해 학습 데이터의 특징을 추출하는 네트워크이다. 행렬 입력과 필터의 합성곱을 순차적으로 진행하여 contextual information을 얻어 필터를 학습한다. Contextual information을 추출하는 특징 때문에 CNN은 주로 이미지 데이터를 학습할 때 사용한다.  
 
 ### 성능
