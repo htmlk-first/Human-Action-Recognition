@@ -66,13 +66,14 @@ CNN은 여러 필터를 통해 학습 데이터의 특징을 추출하는 네트
 
 #### 평가지표
 
-행동 인식 모델을 평가하는 지표로써 accuracy와 f1-score를 사용한다. Accuracy와 f1-score를 수식적으로 나타내면 다음과 같다.  
+행동 인식 모델을 평가하는 지표로써 accuracy와 f1-score를 사용한다.  
+Accuracy와 f1-score를 수식적으로 나타내면 다음과 같다.  
 
 $accuracy= {TP+TN} over {TP+TN+FP+FN}$  
 
 $f1-score=2 TIMES  {"precision" TIMES "recall"} over {"precision"+"recall"}$  
 
-$"precision"= { TP} over {TP+FP }$
+$precision= { TP} over {TP+FP }$
 
 $recall= { TP} over {TP+FN }$  
 
@@ -86,18 +87,15 @@ TP(true positive)는 positive 데이터를 예측 성공한 경우를 뜻하고,
 
 #### 실험 결과
 
-##### RNN
-
+* RNN
 ![RNN](./img/RNNs.PNG)
 landmark는 좌표 정보만을 학습했을 때의 결과이고, landmark & angle은 좌표 정보와 각도 정보를 모두 학습한 경우를 뜻한다. 관절 좌표에 각도를 추가하여 학습한 결과는 관절 좌표만 학습한 결과보다 좋은 성능을 확인할 수 있다. F1-score가 0인 모델은 올바른 데이터를 전혀 예측하지 못한 경우이다. 불량한 데이터의 수가 올바른 데이터 수보다 2배 이상 많기 때문에 accuracy는 높게 나타난 대신 f1-score는 0으로 나왔다. 기울기 소실 및 폭발 문제가 발생한 것으로 예상한다.  
 
-##### LSTM
-
+* LSTM
 ![LSTM](./img/LSTMs.PNG)
 RNN 모델에 비해 기울기 소실 문제를 해결하여 높은 성능을 보인 것으로 확인된다. 그러나 특정 운동의 f1-score는 0으로 기울기 소실 문제가 완전히 해결되지 않았다는 것을 알 수 있다.  
 
-##### CNN
-
+* CNN
 ![CNN](./img/CNNs.PNG)
 CNN 모델의 성능이 가장 좋다는 것을 확인할 수 있다. 각도 정보를 추가한 모델의 f1-score가 2.7% 증가함을 알 수 있다. 최종적으로 CNN 모델의 성능이 가장 좋다는 것을 확인하였다.
 본 연구에서 사용한 시계열 데이터는 각 관절들의 좌표들로 이루어져 데이터들 간의 관계가 존재한다. 예를 들어 사용자가 좌측으로 움직이면, 모든 좌표들이 움직임에 따라 값이 변화하게 된다. 또한, 특정 각도가 변하면, 그 각도와 관계된 다른 각도가 변한다. 일반적으로 시계열 데이터를 CNN 모델로 학습하는 경우는 흔하지 않다. 그러나 본 연구에서 사용한 데이터들은 서로 상관관계를 가지므로 CNN의 contextual information을 추출하는 특징 때문에 가장 좋은 성능을 보인 것으로 예상한다.
@@ -105,9 +103,11 @@ CNN 모델의 성능이 가장 좋다는 것을 확인할 수 있다. 각도 정
 ### 구현
 
 파이썬 코드 실행  
+
 ![jh](./img/impli1.png)  
 
 제안한 모델들을 활용하여 웹사이트에 구현하였다.  
+
 ![website](./img/image03.png)  
 ![bs](./img/image02.png)  
 
@@ -118,5 +118,7 @@ CNN 모델의 성능이 가장 좋다는 것을 확인할 수 있다. 각도 정
 이 프로젝트에서는 시계열 데이터를 활용하여 운동 자세 교정 시스템을 위한 적합한 모델을 제안했다. AI-hub의 피트니스 이미지를 mediapipe pose를 통하여 분석했다. 좌표 정보를 토대로 각도 정보를 계산하여 학습 데이터로 사용했으며, 3개의 딥러닝 모델에 따른 성능을 평가했다. 학습하는 이미지의 수가 불균형하기 때문에 f1-score를 평가지표로 사용했고, CNN 모델이 RNN 모델과 LSTM 모델에 비해 분류 정확도가 각각 48%, 11% 높은 성능을 보이는 것을 확인했다. 향후 연구로써, 카메라 외의 동작, 자이로 센서와 같은 복합적인 센서 정보를 활용할 경우, 사용자의 운동 자세를 더 정확하게 분류해 행동 인식 서비스에 활용될 수 있을 것으로 예상한다.
 
 ---
+
+## 국내 논문 출허
 
 > B. Hwang, J. Kim, Y. R. Lee, C. Kyeong, J. Seon, Y. G. Sun, and J. Y. Kim, “Performance of exercise posture correction system based on deep learning,” The Journal of The Institute of Internet, Broadcasting and Communication (J. IIBC), vol. 22, no. 5, pp.177-183, Oct. 2022.
